@@ -1,0 +1,51 @@
+
+<mat-stepper [linear]="isLinear1" #stepper>
+  
+  <mat-step [stepControl]="parentForm">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Search Hotel</ng-template>
+       <app-search-hotel></app-search-hotel>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="parentForm" label="Choose Hotel">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Choose Hotel</ng-template>
+      <app-choose-hotel [chosenHotelType]="hotelType"></app-choose-hotel>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="parentForm" label="Choose Room">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Choose Room</ng-template>
+      <app-choose-room></app-choose-room>
+    </form>
+  </mat-step>
+  
+  <mat-step [stepControl]="parentForm" label="Personal Information">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Personal Information</ng-template>
+      <app-personal-information></app-personal-information>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="parentForm" label="Guest Information">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Guest Information</ng-template>
+      <app-guest-information></app-guest-information>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="parentForm" label="Payment Details">
+    <form [formGroup]="parentForm">
+      <ng-template matStepLabel>Payment Details</ng-template>
+      <app-payment-details [stepper]="stepper"></app-payment-details>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="parentForm" label="Finish Booking">
+    <form [formGroup]="parentForm">
+      <app-finish-booking></app-finish-booking>
+      
+    </form>
+  </mat-step>
+</mat-stepper>

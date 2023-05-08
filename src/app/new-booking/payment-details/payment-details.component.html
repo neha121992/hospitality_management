@@ -1,0 +1,66 @@
+<h1>Payment Details</h1>
+<form [formGroup]="paymentForm">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Name On the Card</mat-label>
+        <input matInput formControlName="nameOnCard">
+      </mat-form-field>
+    </div>
+  
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Debit/Card Number</mat-label>
+        <input matInput formControlName="debitCardNumber">
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Month</mat-label>
+        <mat-select formControlName="expirymonth">
+          <mat-option *ngFor="let month of monthList" [value]="month">
+            {{month}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Year</mat-label>
+        <mat-select formControlName="expiryYear">
+          <mat-option *ngFor="let yr of yearList" [value]="yr">
+            {{yr}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Security Code</mat-label>
+      <input matInput formControlName="securityCode">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Payment Status</mat-label>
+    <mat-select formControlName="payStatus">
+      <mat-option *ngFor="let status of paymentStatus" [value]="status">
+        {{status}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+
+
+  <button (click)="saveForm()">Save</button>
+
+</form>
+<div class="float-end">
+  <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+  <button mat-raised-button color="primary" class="ms-2" matStepperNext (click)="placeOrder()">Confirm Payment</button>
+</div>

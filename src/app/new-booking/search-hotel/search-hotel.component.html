@@ -1,0 +1,42 @@
+<h1>Search Hotel</h1>
+<div class="container-fluid mt-2 mx-2">
+  <form [formGroup]="searchHotel" (ngSubmit)="saveForm()">
+    <div class="row">
+    <div class="col-md-6">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Select City</mat-label>
+          <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="city"
+            [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of cityName" [value]="option.cityName">
+              {{option.cityName}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate formControlName="checkInDate" placeholder="Start date">
+            <input matEndDate formControlName="checkOutDate" placeholder="End date">
+          </mat-date-range-input>
+          <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </div>
+<div class="row">
+  <div class="col-md-6">
+    <span class="float-start">Adults<mat-icon class="mx-2" (click)="adultsChange('increment')">add_circle</mat-icon>{{searchHotel.value.adults}}<mat-icon class="mx-2" (click)="adultsChange('decrement')">do_not_disturb_on</mat-icon></span>
+    <span class="float-end">Childrens<mat-icon class="mx-2" (click)="childrenChange('increment')">add_circle</mat-icon>{{searchHotel.value.children}}<mat-icon class="mx-2" (click)="childrenChange('decrement')">do_not_disturb_on</mat-icon></span>
+  </div>
+</div>
+  
+    <div class="mt-2">
+      <button mat-raised-button matStepperNext color="primary">Search Hotel</button>
+    </div>
+  </form>
+</div>
+

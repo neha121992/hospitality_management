@@ -1,0 +1,43 @@
+<h1>Guest Information</h1>
+<div class="container-fluid">
+<form [formGroup]="guestsDetails">
+  <div formArrayName="guestArr">
+      <div class="row" *ngFor="let item of guestArr.controls; let i=index">
+        <ng-container [formGroupName]="i">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Guest Name</mat-label>
+              <input matInput formControlName="customerName">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Age</mat-label>
+              <input matInput formControlName="age">
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-radio-group aria-label="Select an option" formControlName="gender">Gender:
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+              <mat-radio-button value="others">Others</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="float-end">
+            <button mat-fab color="primary" class="me-2"  (click)="addGuest()" *ngIf="(guestArr.controls.length-1)==i">
+              <mat-icon>add_circle</mat-icon></button>
+            <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="removeGuest(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+     
+    </div>
+</form>
+</div>
+<button mat-raised-button color="primary"  matStepperNext class="mt-4 ms-3" (click)="saveForm()">Save & Next</button>
+
+
+

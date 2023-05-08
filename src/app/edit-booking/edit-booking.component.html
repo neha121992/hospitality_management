@@ -1,0 +1,35 @@
+<p>edit-booking works!</p>
+<form [formGroup]="editBookingDetails">
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <div class="col-md-6">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>CheckIn and CheckOutDate</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="checkInDate" placeholder="Start date">
+        <input matEndDate formControlName="checkOutDate" placeholder="End date">
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+        <mat-label>Payment Status</mat-label>
+        <mat-select formControlName="payStatus">
+          <mat-option *ngFor="let status of paymentStatus" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+</div>
+</form>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button (click)="update()">Save</button>
+  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+</div>
